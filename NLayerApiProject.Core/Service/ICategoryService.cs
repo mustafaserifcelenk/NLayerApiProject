@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLayerApiProject.Core.Repository
+namespace NLayerApiProject.Core.Service
 {
-    public interface ICategoryRepository:IRepository<Category>
+    public interface ICategoryService : IService<Category>
     {
         Task<Category> GetWithProductsByIdAsync(int categoryId);
+
+        // Category'ye özgü ICategoryRepository'den(veritabanı işlerinden) bağımsız metotlar varsa burada tanımlanabilir
     }
 }

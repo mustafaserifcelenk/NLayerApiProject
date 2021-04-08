@@ -5,9 +5,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLayerApiProject.Core.Repository
+namespace NLayerApiProject.Core.Service
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IService<TEntity> where TEntity:class
     {
         Task<TEntity> GetByIdAsync(int Id);
         Task<IEnumerable<TEntity>> GetAllAsync();
@@ -24,6 +24,5 @@ namespace NLayerApiProject.Core.Repository
         Task RemoveAsync(TEntity entity);
         Task RemoveRangeAsync(IEnumerable<TEntity> entities);
         TEntity Update(TEntity entity);
-
     }
 }

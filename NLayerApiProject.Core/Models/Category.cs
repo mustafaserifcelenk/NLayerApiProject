@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NLayerApiProject.Core.Models
 {
-    internal class Category
+    public class Category
     {
         public Category()
         {

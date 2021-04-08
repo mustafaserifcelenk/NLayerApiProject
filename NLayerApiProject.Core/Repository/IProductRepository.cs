@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NLayerApiProject.Core.Repository
 {
-    internal interface IProductRepository:IRepository<Product>
+    public interface IProductRepository:IRepository<Product>
     {
         Task<Product> GeWithCategoryByIdAsync(int productId); 
     }
