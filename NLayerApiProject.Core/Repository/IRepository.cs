@@ -9,20 +9,20 @@ namespace NLayerApiProject.Core.Repository
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        Task<TEntity> GetByIdAsync(int Id);
+        Task<TEntity> GetByIdAsync(int id);
         Task<IEnumerable<TEntity>> GetAllAsync();
 
         // Func : Bu bir fonksiyon olacak
         // TEntity alacak ve dönüş tipi bool olacak
         // Func ve predicate bir delege 
-        Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
+        IEnumerable<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
 
         // x => x.name == "Kalem"; 'x': TEntity, 'x.name == Kalem' : bool
         Task<TEntity> SingleOrDefaultASync(Expression<Func<TEntity, bool>> predicate);
         Task AddAsync(TEntity entity);
         Task AddRangeAsync(IEnumerable<TEntity> entities);
-        Task RemoveAsync(TEntity entity);
-        Task RemoveRangeAsync(IEnumerable<TEntity> entities);
+        void RemoveAsync(TEntity entity);
+        void RemoveRangeAsync(IEnumerable<TEntity> entities);
         TEntity Update(TEntity entity);
 
     }
