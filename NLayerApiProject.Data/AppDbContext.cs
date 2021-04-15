@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NLayerApiProject.Core.Models;
+using NLayerApiProject.Data.Configuration;
+using NLayerApiProject.Data.Seeds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +23,12 @@ namespace NLayerApiProject.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+
+            modelBuilder.ApplyConfiguration(new ProductSeed(new int[] { 1, 2 }));
+            modelBuilder.ApplyConfiguration(new CategorySeed(new int[] { 1, 2 }));
+
         }
 
     }
