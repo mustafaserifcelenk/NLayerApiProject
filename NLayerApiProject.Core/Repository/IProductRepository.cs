@@ -9,6 +9,6 @@ namespace NLayerApiProject.Core.Repository
 {
     public interface IProductRepository:IRepository<Product>
     {
-        Task<Product> GeWithCategoryByIdAsync(int productId); 
+        Task<Product> GetWithCategoryByIdAsync(int productId); 
     }
 }
