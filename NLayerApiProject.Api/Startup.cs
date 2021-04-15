@@ -32,7 +32,9 @@ namespace NLayerApiProject.Api
         {
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"].ToString());
+                options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"].ToString(), o=> {
+                    o.MigrationsAssembly("NLayerApiProject.Data");
+                    });
             });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllers();
