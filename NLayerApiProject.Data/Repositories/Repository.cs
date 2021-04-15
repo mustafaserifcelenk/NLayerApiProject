@@ -14,7 +14,7 @@ namespace NLayerApiProject.Data.Repositories
         protected readonly DbContext _context;
         private readonly DbSet<TEntity> _dbSet;
 
-        public Repository(DbContext context)
+        public Repository(AppDbContext context)
         {
             // _context : Veritabanına erişim
             _context = context;
@@ -36,9 +36,9 @@ namespace NLayerApiProject.Data.Repositories
         }
 
         // Task senkron programlamadaki voide karşılık gelir
-        public IEnumerable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
+        public async Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate)
         {
-            return _dbSet.Where(predicate);
+            return await _dbSet.Where(predicate).ToListAsync();
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
@@ -51,17 +51,17 @@ namespace NLayerApiProject.Data.Repositories
             return await _dbSet.FindAsync(id);
         }
 
-        public void RemoveAsync(TEntity entity)
+        public void Remove(TEntity entity)
         {
             _dbSet.Remove(entity);
         }
 
-        public void RemoveRangeAsync(IEnumerable<TEntity> entities)
+        public void RemoveRange(IEnumerable<TEntity> entities)
         {
             _dbSet.RemoveRange(entities);
         }
 
-        public async Task<TEntity> SingleOrDefaultASync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await _dbSet.SingleOrDefaultAsync(predicate);
         }

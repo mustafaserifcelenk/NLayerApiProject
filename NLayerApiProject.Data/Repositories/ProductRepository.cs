@@ -17,7 +17,7 @@ namespace NLayerApiProject.Data.Repositories
 
         // Repository'de bir tane constructor olduğundan dolayı ve biz de onu miras aldığımızdan dolayı burada da constructor olmak zorunda
         // burdan gönderilen context ile Repository'deki context doluyor
-        public ProductRepository(DbContext context) : base(context)
+        public ProductRepository(AppDbContext context) : base(context)
         {
         }
 
