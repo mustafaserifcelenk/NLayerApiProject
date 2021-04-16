@@ -8,9 +8,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using NLayerApiProject.Core.Repository;
+using NLayerApiProject.Core.Service;
 using NLayerApiProject.Core.UnitOfWork;
 using NLayerApiProject.Data;
+using NLayerApiProject.Data.Repositories;
 using NLayerApiProject.Data.UnitOfWorks;
+using NLayerApiProject.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +34,11 @@ namespace NLayerApiProject.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IService<>), typeof(Service.Services.Service<>));
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"].ToString(), o=> {
