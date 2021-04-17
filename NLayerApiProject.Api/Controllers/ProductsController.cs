@@ -11,6 +11,7 @@ using UdemyNLayerProject.API.DTOs;
 
 namespace NLayerApiProject.Api.Controllers
 {
+    //[Route("api/[controller]/[action]")] : Action ismiyle yakalamak isterseniz böyle yazılmalı ancak bestpractice değil, isteğin türüne göre otomatik yakalaması en iyisi
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
