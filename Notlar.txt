@@ -1,0 +1,1 @@
+Mapper : Dönüþtürme iþlemlerinde dönüþtürülen classla dönüþen classýn property isimleri ayný olmalý
