@@ -9,7 +9,7 @@ namespace NLayerApiProject.Core.Service
 {
     public interface IProductService : IService<Product>
     {
-        Task<Product> GeWithCategoryByIdAsync(int productId);
+        Task<Product> GetWithCategoryByIdAsync(int productId);
 
         // Product nesnesi üzerinden veritabanıyla ilgili olmayan işlemlerde burada tanımlanır
         //bool ControlInnerBarcode(Product product);

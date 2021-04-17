@@ -17,7 +17,7 @@ namespace NLayerApiProject.Service.Services
         {
         }
 
-        public async Task<Product> GeWithCategoryByIdAsync(int productId)
+        public async Task<Product> GetWithCategoryByIdAsync(int productId)
         {
             return await _unitOfWork.Product.GetWithCategoryByIdAsync(productId);
         }

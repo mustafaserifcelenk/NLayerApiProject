@@ -13,12 +13,12 @@ namespace NLayerApiProject.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
 
-        public CategoryController(ICategoryService categoryService, IMapper mapper)
+        public CategoriesController(ICategoryService categoryService, IMapper mapper)
         {
             // Dependency injection burada ICategoryService ile karşılaştı ve gitti categoryService.cs alıp burada nesneye atadı
             _categoryService = categoryService;
