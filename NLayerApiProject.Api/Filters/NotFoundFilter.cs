@@ -5,8 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UdemyNLayerProject.API.DTOs;
-namespace UdemyNLayerProject.API.Filters
+using NLayerApiProject.API.DTOs;
+namespace NLayerApiProject.API.Filters
 {
     public class NotFoundFilter : ActionFilterAttribute
     {

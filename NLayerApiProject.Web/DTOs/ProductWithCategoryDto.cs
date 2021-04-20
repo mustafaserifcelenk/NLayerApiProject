@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NLayerApiProject.API.DTOs
+namespace NLayerApiProject.Web.DTOs
 {
     public class ProductWithCategoryDto : ProductDto
     {

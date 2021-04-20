@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NLayerApiProject.API.DTOs;
+using NLayerApiProject.Web.DTOs;
 
 namespace NLayerApiProject.API.Mapping
 {

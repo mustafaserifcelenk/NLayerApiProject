@@ -7,8 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UdemyNLayerProject.API.DTOs;
-using UdemyNLayerProject.API.Filters;
+using NLayerApiProject.API.DTOs;
+using NLayerApiProject.API.Filters;
 
 namespace NLayerApiProject.Api.Controllers
 {
