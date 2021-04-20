@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using UdemyNLayerProject.API.Filters;
 
 namespace NLayerApiProject.Api
 {
@@ -36,6 +37,9 @@ namespace NLayerApiProject.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
+
+            // DI nesnesi alan filter'ý startup'da tanýmlama, bunun sebebi DI nesnesi interface'i aldýðýndan startup'a kaydetme gerekliliði
+            services.AddScoped<NotFoundFilter>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IService<>), typeof(Service.Services.Service<>));
             services.AddScoped<ICategoryService, CategoryService>();
