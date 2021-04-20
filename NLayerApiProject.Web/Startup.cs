@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NLayerApiProject.Web.ApiService;
 
 namespace NLayerApiProject.Web
 {
@@ -32,6 +33,11 @@ namespace NLayerApiProject.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // HttpClient'a appsettings.json'dan baseurl verdik ki her defasýnda tekrar yazmayalým
+            services.AddHttpClient<CategoryApiService>(opt=> 
+            {
+                opt.BaseAddress = new Uri(Configuration["baseUrl"]);
+            });
             services.AddScoped<NotFoundFilter>();
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
