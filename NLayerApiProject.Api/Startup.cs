@@ -48,6 +48,11 @@ namespace NLayerApiProject.Api
             });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllers();
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                // Artýk invalid filterýný sen kontrol etme, ben kontrol edeceðim
+                options.SuppressModelStateInvalidFilter = true;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NLayerApiProject.Api", Version = "v1" });
