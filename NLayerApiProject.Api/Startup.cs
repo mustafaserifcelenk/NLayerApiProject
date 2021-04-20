@@ -49,6 +49,7 @@ namespace NLayerApiProject.Api
             services.AddScoped(typeof(IService<>), typeof(Service.Services.Service<>));
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"].ToString(), o =>
@@ -56,7 +57,6 @@ namespace NLayerApiProject.Api
                     o.MigrationsAssembly("NLayerApiProject.Data");
                 });
             });
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             // Global olarak filtre tanýmlama
             // services.AddControllers(o=> {
