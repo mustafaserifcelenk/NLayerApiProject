@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using NLayerApiProject.Core.Models;
 using NLayerApiProject.Core.Service;
 using NLayerApiProject.Web.DTOs;
+using NLayerApiProject.Web.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,7 +57,7 @@ namespace NLayerApiProject.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        //[ServiceFilter(typeof(NotFoundFilter))]
+        [ServiceFilter(typeof(NotFoundFilter))]
         public IActionResult Delete(int id)
         {
             var category = _categoryService.GetByIdAsync(id).Result;
