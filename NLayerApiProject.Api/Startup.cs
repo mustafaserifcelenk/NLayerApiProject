@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using UdemyNLayerProject.API.DTOs;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using NLayerApiProject.Api.Extensions;
 
 namespace NLayerApiProject.Api
 {
@@ -83,34 +84,8 @@ namespace NLayerApiProject.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NLayerApiProject.Api v1"));
             }
 
-            #region Global Exception Handling
-            // Uygulamanýn herhangi bir yerinde erhangi bir hata fýrlatýldýðý zaman
-            app.UseExceptionHandler(config =>
-            {
-                // Hata gelince config option üzerinden run metodu çalýþacak
-                config.Run(async context =>
-                {
-                    context.Response.StatusCode = 500;
-                    context.Response.ContentType = "application/json";
-
-                    // Hata yakalama
-                    var error = context.Features.Get<IExceptionHandlerFeature>();
-
-                    if (error != null)
-                    {
-                        // Yakalanan errorler
-                        var ex = error.Error;
-
-                        ErrorDto errorDto = new ErrorDto();
-                        errorDto.Status = 500;
-                        errorDto.Errors.Add(ex.Message);
-
-                        // Cevabýn oluþturulmasý (Bu OK metodu gibi otomatik Json Convert yapmaz biz manuel yapýyoruz)
-                        await context.Response.WriteAsync(JsonConvert.SerializeObject(errorDto));
-                    }
-                });
-            });
-                #endregion
+            // Global hata yönetimi
+            app.UseCustomException();
 
             app.UseHttpsRedirection();
 
