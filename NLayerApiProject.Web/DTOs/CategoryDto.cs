@@ -10,6 +10,7 @@ namespace NLayerApiProject.Web.DTOs
     {
         public int Id { get; set; }
 
+        // 0 : Name
         [Required(ErrorMessage = "{0} alanı boş olamaz ")]
         public string Name { get; set; }
     }
