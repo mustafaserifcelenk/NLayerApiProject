@@ -50,7 +50,7 @@ namespace NLayerApiProject.Web.ApiService
             }
         }
 
-        public async Task<CategoryDto> GetById(int id)
+        public async Task<CategoryDto> GetByIdAsync(int id)
         {
             var response = await _httpClient.GetAsync($"categories/{id}");
             if (response.IsSuccessStatusCode)
@@ -67,6 +67,19 @@ namespace NLayerApiProject.Web.ApiService
         {
             var stringContent = new StringContent(JsonConvert.SerializeObject(categoryDto), Encoding.UTF8, "application/json");
             var response = await _httpClient.PutAsync("categories", stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> Remove(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"Categories/{id}");
             if (response.IsSuccessStatusCode)
             {
                 return true;

@@ -47,7 +47,7 @@ namespace NLayerApiProject.Web.Controllers
         //update/5
         public async Task<IActionResult> Update(int id)
         {
-            var category = await _categoryApiService.GetById(id);
+            var category = await _categoryApiService.GetByIdAsync(id);
 
             return View(_mapper.Map<CategoryDto>(category));
         }
@@ -61,11 +61,10 @@ namespace NLayerApiProject.Web.Controllers
         }
 
         [ServiceFilter(typeof(NotFoundFilter))]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var category = _categoryService.GetByIdAsync(id).Result;
 
-            _categoryService.Remove(category);
+            await _categoryApiService.Remove(id);
 
             return RedirectToAction("Index");
         }
