@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UdemyNLayerProject.API.DTOs;
+using NLayerApiProject.API.DTOs;
 
-namespace UdemyNLayerProject.API.Filters
+namespace NLayerApiProject.API.Filters
 {
     public class ValidationFilter : ActionFilterAttribute
     {

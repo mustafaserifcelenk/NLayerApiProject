@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UdemyNLayerProject.API.DTOs
+namespace NLayerApiProject.API.DTOs
 {
     public class ProductDto
     {

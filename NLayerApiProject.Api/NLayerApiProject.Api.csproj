@@ -15,8 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NLayerApiProject.Core\NLayerApiProject.Core.csproj" />
-    <ProjectReference Include="..\NLayerApiProject.Data\NLayerApiProject.Data.csproj" />
     <ProjectReference Include="..\NLayerApiProject.Service\NLayerApiProject.Service.csproj" />
   </ItemGroup>
 

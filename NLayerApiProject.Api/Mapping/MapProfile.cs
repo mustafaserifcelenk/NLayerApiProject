@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UdemyNLayerProject.API.DTOs;
+using NLayerApiProject.API.DTOs;
 
-namespace UdemyNLayerProject.API.Mapping
+namespace NLayerApiProject.API.Mapping
 {
     public class MapProfile : Profile
     {

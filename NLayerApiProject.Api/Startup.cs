@@ -20,9 +20,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using UdemyNLayerProject.API.Filters;
+using NLayerApiProject.API.Filters;
 using Microsoft.AspNetCore.Diagnostics;
-using UdemyNLayerProject.API.DTOs;
+using NLayerApiProject.API.DTOs;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using NLayerApiProject.Api.Extensions;
@@ -49,6 +49,7 @@ namespace NLayerApiProject.Api
             services.AddScoped(typeof(IService<>), typeof(Service.Services.Service<>));
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"].ToString(), o =>
@@ -56,7 +57,6 @@ namespace NLayerApiProject.Api
                     o.MigrationsAssembly("NLayerApiProject.Data");
                 });
             });
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             // Global olarak filtre tanýmlama
             // services.AddControllers(o=> {
