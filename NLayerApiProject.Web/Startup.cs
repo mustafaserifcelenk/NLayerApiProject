@@ -38,6 +38,7 @@ namespace NLayerApiProject.Web
             {
                 opt.BaseAddress = new Uri(Configuration["baseUrl"]);
             });
+            //services.AddSingleton(typeof(IApiService<>))
             services.AddScoped<NotFoundFilter>();
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
