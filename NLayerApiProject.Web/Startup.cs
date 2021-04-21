@@ -1,18 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLayerApiProject.Web.Filters;
-using NLayerApiProject.Core.Repository;
-using NLayerApiProject.Core.Service;
-using NLayerApiProject.Core.UnitOfWork;
-using NLayerApiProject.Data;
-using NLayerApiProject.Data.Repositories;
-using NLayerApiProject.Data.UnitOfWorks;
-using NLayerApiProject.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,21 +31,21 @@ namespace NLayerApiProject.Web
                 opt.BaseAddress = new Uri(Configuration["baseUrl"]);
             });
             //services.AddSingleton(typeof(IApiService<>))
-            services.AddScoped<NotFoundFilter>();
-            services.AddAutoMapper(typeof(Startup));
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped(typeof(IService<>), typeof(Service.Services.Service<>));
-            services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<IProductService, ProductService>();
-            // AddScope : Requestte bir kere
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddDbContext<AppDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"].ToString(), o =>
-                {
-                    o.MigrationsAssembly("NLayerApiProject.Data");
-                });
-            });
+            //services.AddScoped<NotFoundFilter>();
+            //services.AddAutoMapper(typeof(Startup));
+            //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            //services.AddScoped(typeof(IService<>), typeof(Service.Services.Service<>));
+            //services.AddScoped<ICategoryService, CategoryService>();
+            //services.AddScoped<IProductService, ProductService>();
+            //// AddScope : Requestte bir kere
+            //services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //services.AddDbContext<AppDbContext>(options =>
+            //{
+            //    options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"].ToString(), o =>
+            //    {
+            //        o.MigrationsAssembly("NLayerApiProject.Data");
+            //    });
+            //});
             services.AddControllersWithViews();
         }
 

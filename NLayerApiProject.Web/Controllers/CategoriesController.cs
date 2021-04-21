@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using NLayerApiProject.Core.Models;
-using NLayerApiProject.Core.Service;
 using NLayerApiProject.Web.ApiService;
 using NLayerApiProject.Web.DTOs;
 using NLayerApiProject.Web.Filters;
@@ -14,13 +12,11 @@ namespace NLayerApiProject.Web.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly ICategoryService _categoryService;
         private readonly CategoryApiService _categoryApiService;
         private readonly IMapper _mapper;
 
-        public CategoriesController(ICategoryService categoryService, IMapper mapper, CategoryApiService categoryApiService)
+        public CategoriesController( IMapper mapper, CategoryApiService categoryApiService)
         {
-            _categoryService = categoryService;
             _mapper = mapper;
             _categoryApiService = categoryApiService;
         }
